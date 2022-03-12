@@ -19,7 +19,7 @@ const NoteForm = (props) => {
       id: uuid(),
       name: name,
       email: email,
-      gen: gen,
+      date: new Date(),
     };
 
     dispatch(addNote(newNote));
