@@ -1,5 +1,3 @@
-import { V4 as uuid } from "uuid";
-
 const initialState = {
   notes: [],
 };
@@ -9,7 +7,7 @@ const reducer = (state = initialState, action) => {
     case "CREATE_NOTE":
       return {
         ...state,
-        notes: [...state.notes, action],
+        notes: [...state.notes, action.payload],
       };
     default:
       return state;
