@@ -12,9 +12,7 @@ const User = (props) => {
   const [email, setEmail] = useState(user.email);
   const [gen, setGen] = useState(user.gen);
 
-  const handleDelete = () => {
-    
-  };
+  const handleDelete = () => {};
 
   const handleSubmit = () => {
     let userData = {
@@ -23,8 +21,6 @@ const User = (props) => {
       email: email,
       gen: gen,
     };
-
-   
 
     handleClose();
   };
@@ -36,17 +32,23 @@ const User = (props) => {
   return (
     <>
       <div className="d-flex justify-content-center">
-      <Card style={{ width: '18rem' }} >
-  <Card.Body>
-    <Card.Text>Name:{user.name}</Card.Text>
-    <Card.Text>PhoneNumber:{user.email}</Card.Text>
-    <Card.Text>Location:{user.gen}</Card.Text>
-    <Button onClick={() => setIsShowing(true)} variant="outline-primary" size="lg">Edit</Button>
-        <Button variant="outline-danger" size="lg" onClick={handleDelete}>
-          Delete
-        </Button>
-  </Card.Body>
-</Card>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Text>Name:{user.name}</Card.Text>
+            <Card.Text>PhoneNumber:{user.email}</Card.Text>
+            <Card.Text>Location:{user.gen}</Card.Text>
+            <Button
+              onClick={() => setIsShowing(true)}
+              variant="outline-primary"
+              size="lg"
+            >
+              Edit
+            </Button>
+            <Button variant="outline-danger" size="lg" onClick={handleDelete}>
+              Delete
+            </Button>
+          </Card.Body>
+        </Card>
       </div>
 
       <Modal show={isShowing} onHide={handleClose}>
@@ -84,4 +86,3 @@ const User = (props) => {
 };
 
 export default User;
-
