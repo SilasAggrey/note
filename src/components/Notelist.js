@@ -1,22 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Note from "./Note";
 
 const UserList = (props) => {
   const notes = useSelector((state) => {
     return state.notes;
   });
 
+  console.log(notes);
+
   return (
-    <div className="d-flex justify-content-center">
-      <h1>Note list</h1>
+    <div>
+      <h1 className="text-center">Note list</h1>
       {notes.map((note, index) => {
-        return (
-          <div key={`${note.name}-${index}`}>
-            <h1>{note.name}</h1>
-            <h3>{note.email}</h3>
-            <h5>{note.date}</h5>
-          </div>
-        );
+        return <Note key={note.id} note={note} />;
       })}
     </div>
   );

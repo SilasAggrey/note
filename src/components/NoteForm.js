@@ -21,6 +21,7 @@ const NoteForm = (props) => {
       email: email,
       date: new Date(),
     };
+    console.log(newNote);
 
     dispatch(addNote(newNote));
   };
@@ -60,7 +61,7 @@ const NoteForm = (props) => {
             onChange={(e) => setNoteText(e.target.value)}
           />
         </FormGroup>
-        <button type="submit" class="w-100 mt-2 btn btn-primary">
+        <button type="submit" className="w-100 mt-2 btn btn-primary">
           Submit
         </button>
       </Form>

@@ -2,26 +2,30 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Card } from "react-bootstrap";
+import { deleteNote, editNote } from "../actions/noteActions";
 
-const User = (props) => {
-  const user = props.user;
+const Note = (props) => {
+  const note = props.note;
   const dispatch = useDispatch();
 
   const [isShowing, setIsShowing] = useState(false);
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [gen, setGen] = useState(user.gen);
+  const [name, setName] = useState(note.name);
+  const [email, setEmail] = useState(note.email);
+  const [gen, setGen] = useState(note.gen);
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispatch(deleteNote(note.id));
+  };
 
   const handleSubmit = () => {
-    let userData = {
-      id: user.id,
+    let noteData = {
+      id: note.id,
       name: name,
       email: email,
-      gen: gen,
+      date: note.date,
     };
 
+    dispatch(editNote(noteData));
     handleClose();
   };
 
@@ -34,9 +38,9 @@ const User = (props) => {
       <div className="d-flex justify-content-center">
         <Card style={{ width: "18rem" }}>
           <Card.Body>
-            <Card.Text>Name:{user.name}</Card.Text>
-            <Card.Text>PhoneNumber:{user.email}</Card.Text>
-            <Card.Text>Location:{user.gen}</Card.Text>
+            <Card.Text>Name:{note.name}</Card.Text>
+            <Card.Text>PhoneNumber:{note.email}</Card.Text>
+            <Card.Text>Location:{note.gen}</Card.Text>
             <Button
               onClick={() => setIsShowing(true)}
               variant="outline-primary"
@@ -85,4 +89,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default Note;
