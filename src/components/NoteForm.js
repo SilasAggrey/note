@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { Form } from "react-bootstrap";
 import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addNote } from "./actions/noteActions";
+import { addNote } from "../actions/noteActions";
 
 const NoteForm = (props) => {
   const [name, setNoteTitle] = useState("");

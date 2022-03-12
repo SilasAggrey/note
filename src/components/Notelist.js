@@ -1,19 +1,23 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const UserList = (props) => {
-  console.log(props.students);
+  const notes = useSelector((state) => {
+    return state.notes;
+  });
+
   return (
     <div className="d-flex justify-content-center">
       <h1>Note list</h1>
-      {/* {props.users.map((user, index) => {
+      {notes.map((note, index) => {
         return (
-          <div key={`${user.name}-${index}`}>
-            <h1>{user.name}</h1>
-            <h3>{user.email}</h3>
-            <h5>{user.gen}</h5>
+          <div key={`${note.name}-${index}`}>
+            <h1>{note.name}</h1>
+            <h3>{note.email}</h3>
+            <h5>{note.date}</h5>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };
