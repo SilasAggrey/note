@@ -1,10 +1,9 @@
 import React from "react";
 
-
 const UserList = (props) => {
   console.log(props.students);
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <h1>Note list</h1>
       {/* {props.users.map((user, index) => {
         return (
@@ -18,10 +17,5 @@ const UserList = (props) => {
     </div>
   );
 };
-
-
-
-
-
 
 export default UserList;
