@@ -2,23 +2,27 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { Form } from "react-bootstrap";
 import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addNote } from "./actions/noteActions";
 
 const NoteForm = (props) => {
   const [name, setNoteTitle] = useState("");
   const [email, setDate] = useState("");
   const [gen, setNoteText] = useState("");
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let newUser = {
+    let newNote = {
       id: uuid(),
       name: name,
       email: email,
       gen: gen,
     };
 
-    props.addUser(newUser);
+    dispatch(addNote(newNote));
   };
 
   return (
