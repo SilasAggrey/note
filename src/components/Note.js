@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Button,
+  Form,
   FormControl,
   FormGroup,
   FormLabel,
@@ -9,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { Card } from "react-bootstrap";
 import { deleteNote, editNote } from "../actions/noteActions";
+import moment from "moment";
 
 const Note = (props) => {
   const note = props.note;
@@ -46,7 +48,7 @@ const Note = (props) => {
             <Card.Text>Title: {note.title}</Card.Text>
             <Card.Text>Note Text: {note.text}</Card.Text>
             <Card.Text>
-              Date created: {note.date.toLocaleDateString()}
+              Date created: {moment(note.date).format("MMM Do YY, h:mm:ss a")}
             </Card.Text>
             <Button
               onClick={() => setIsShowing(true)}
@@ -83,16 +85,17 @@ const Note = (props) => {
             />
           </FormGroup>
 
-          <FormGroup className="mb-3" controlId="formBasicEmail">
-            <FormLabel>Note Text</FormLabel>
-            <FormControl
-              type=""
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Note Text</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
               placeholder="Text"
               onSubmit={handleSubmit}
               value={text}
               onChange={(e) => setNoteText(e.target.value)}
             />
-          </FormGroup>
+          </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
