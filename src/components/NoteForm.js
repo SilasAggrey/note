@@ -6,9 +6,8 @@ import { useDispatch } from "react-redux";
 import { addNote } from "../actions/noteActions";
 
 const NoteForm = (props) => {
-  const [name, setNoteTitle] = useState("");
-  const [email, setDate] = useState("");
-  const [gen, setNoteText] = useState("");
+  const [title, setNoteTitle] = useState("");
+  const [text, setNoteText] = useState("");
 
   const dispatch = useDispatch();
 
@@ -17,8 +16,8 @@ const NoteForm = (props) => {
 
     let newNote = {
       id: uuid(),
-      name: name,
-      email: email,
+      title: title,
+      text: text,
       date: new Date(),
     };
     console.log(newNote);
@@ -27,37 +26,27 @@ const NoteForm = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div>
       <Form className="rounded p-4 p-sm-6" onSubmit={handleSubmit}>
         <FormGroup className="mb-3" controlId="formBasicName">
-          <h1>NOTE</h1>
+          <h1>Note List App</h1>
           <FormLabel>Note Title</FormLabel>
           <FormControl
             type="text"
-            placeholder="Name"
+            placeholder="Title"
             onSubmit={handleSubmit}
-            value={name}
+            value={title}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
         </FormGroup>
 
         <FormGroup className="mb-3" controlId="formBasicEmail">
-          <FormLabel>Date</FormLabel>
-          <FormControl
-            type="number"
-            placeholder="Enter Number"
-            onSubmit={handleSubmit}
-            value={email}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup className="mb-3" controlId="formBasicEmail">
           <FormLabel>Note Text</FormLabel>
           <FormControl
             type=""
-            placeholder="Location"
+            placeholder="Text"
             onSubmit={handleSubmit}
-            value={gen}
+            value={text}
             onChange={(e) => setNoteText(e.target.value)}
           />
         </FormGroup>

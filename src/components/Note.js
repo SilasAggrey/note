@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import {
+  Button,
+  FormControl,
+  FormGroup,
+  FormLabel,
+  Modal,
+} from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Card } from "react-bootstrap";
 import { deleteNote, editNote } from "../actions/noteActions";
@@ -9,9 +15,8 @@ const Note = (props) => {
   const dispatch = useDispatch();
 
   const [isShowing, setIsShowing] = useState(false);
-  const [name, setName] = useState(note.name);
-  const [email, setEmail] = useState(note.email);
-  const [gen, setGen] = useState(note.gen);
+  const [title, setNoteTitle] = useState(note.title);
+  const [text, setNoteText] = useState(note.text);
 
   const handleDelete = () => {
     dispatch(deleteNote(note.id));
@@ -20,8 +25,8 @@ const Note = (props) => {
   const handleSubmit = () => {
     let noteData = {
       id: note.id,
-      name: name,
-      email: email,
+      title: title,
+      text: text,
       date: note.date,
     };
 
@@ -35,12 +40,14 @@ const Note = (props) => {
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <Card style={{ width: "18rem" }}>
+      <div className="mb-4 ">
+        <Card className="bg-dark text-white">
           <Card.Body>
-            <Card.Text>Name:{note.name}</Card.Text>
-            <Card.Text>PhoneNumber:{note.email}</Card.Text>
-            <Card.Text>Location:{note.gen}</Card.Text>
+            <Card.Text>Title: {note.title}</Card.Text>
+            <Card.Text>Note Text: {note.text}</Card.Text>
+            <Card.Text>
+              Date created: {note.date.toLocaleDateString()}
+            </Card.Text>
             <Button
               onClick={() => setIsShowing(true)}
               variant="outline-primary"
@@ -48,7 +55,12 @@ const Note = (props) => {
             >
               Edit
             </Button>
-            <Button variant="outline-danger" size="lg" onClick={handleDelete}>
+            <Button
+              className="ml-4"
+              variant="outline-danger"
+              size="lg"
+              onClick={handleDelete}
+            >
               Delete
             </Button>
           </Card.Body>
@@ -57,24 +69,30 @@ const Note = (props) => {
 
       <Modal show={isShowing} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Edit Note</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            value={gen}
-            onChange={(e) => setGen(e.target.value)}
-          />
+          <FormGroup className="mb-3" controlId="formBasicName">
+            <FormLabel>Note Title</FormLabel>
+            <FormControl
+              type="text"
+              placeholder="Title"
+              onSubmit={handleSubmit}
+              value={title}
+              onChange={(e) => setNoteTitle(e.target.value)}
+            />
+          </FormGroup>
+
+          <FormGroup className="mb-3" controlId="formBasicEmail">
+            <FormLabel>Note Text</FormLabel>
+            <FormControl
+              type=""
+              placeholder="Text"
+              onSubmit={handleSubmit}
+              value={text}
+              onChange={(e) => setNoteText(e.target.value)}
+            />
+          </FormGroup>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

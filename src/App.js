@@ -4,7 +4,7 @@ import Notelist from "./components/Notelist";
 
 function App() {
   return (
-    <div>
+    <div style={{ width: "500px", margin: "auto" }}>
       <NoteForm />
       <Notelist />
     </div>

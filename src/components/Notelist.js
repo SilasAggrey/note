@@ -7,11 +7,9 @@ const UserList = (props) => {
     return state.notes;
   });
 
-  console.log(notes);
-
   return (
     <div>
-      <h1 className="text-center">Note list</h1>
+      <h1 className="text-center">Notes</h1>
       {notes.map((note, index) => {
         return <Note key={note.id} note={note} />;
       })}
