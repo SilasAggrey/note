@@ -1,6 +1,7 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Note from "./Note";
 
 const UserList = (props) => {
@@ -10,15 +11,22 @@ const UserList = (props) => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1 className="text-center">Notes</h1>
+      {notes.length > 0 && <h1 className="text-center">Notes</h1>}
       <Row>
-        {notes.map((note, index) => {
-          return (
-            <Col xs={12} md={6}>
-              <Note key={note.id} note={note} />;
-            </Col>
-          );
-        })}
+        {notes.length ? (
+          notes.map((note, index) => {
+            return (
+              <Col xs={12} md={6}>
+                <Note key={note.id} note={note} />;
+              </Col>
+            );
+          })
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <p>No notes please create a note</p>
+            <Link to="/create">Create Note</Link>
+          </div>
+        )}
       </Row>
     </div>
   );

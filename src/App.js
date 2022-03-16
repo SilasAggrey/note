@@ -1,10 +1,18 @@
 import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
 import NoteForm from "./components/NoteForm";
 import Notelist from "./components/Notelist";
 
 function App() {
   return (
-    <div style={{ width: "700px", margin: "auto", border: "1px solid black" }}>
+    <div
+      style={{
+        width: "700px",
+        minHeight: "300px",
+        margin: "auto",
+        border: "1px solid black",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -14,9 +22,11 @@ function App() {
           padding: "15px 25px",
         }}
       >
-        <a href="/#" className="text-white ">
+        {/* <a href="/#" className="text-white ">
           NotesApp
-        </a>
+        </a> */}
+        <Link to="/">NotesApp</Link>
+
         <ul
           style={{
             display: "flex",
@@ -25,19 +35,25 @@ function App() {
           }}
         >
           <li>
-            <a href="/#create" className="text-white ">
+            {/* <a href="/#create" className="text-white ">
               Create Note
-            </a>
+            </a> */}
+            <Link to="/create">Create Note</Link>
           </li>
           <li style={{ marginLeft: "15px" }}>
-            <a href="/#notes" className="text-white ">
+            {/* <a href="/#notes" className="text-white ">
               My Notes
-            </a>
+            </a> */}
+            <Link to="/notes">My Notes</Link>
           </li>
         </ul>
       </div>
-      <NoteForm />
-      <Notelist />
+
+      <Routes>
+        <Route path="/" element={<Notelist />} />
+        <Route path="notes" element={<Notelist />} />
+        <Route path="create" element={<NoteForm />} />
+      </Routes>
     </div>
   );
 }
