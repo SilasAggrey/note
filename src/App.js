@@ -25,7 +25,9 @@ function App() {
         {/* <a href="/#" className="text-white ">
           NotesApp
         </a> */}
-        <Link to="/">NotesApp</Link>
+        <Link style={{ color: "#fff" }} to="/">
+          NotesApp
+        </Link>
 
         <ul
           style={{
@@ -38,13 +40,17 @@ function App() {
             {/* <a href="/#create" className="text-white ">
               Create Note
             </a> */}
-            <Link to="/create">Create Note</Link>
+            <Link style={{ color: "#fff" }} to="/create">
+              Create Note
+            </Link>
           </li>
           <li style={{ marginLeft: "15px" }}>
             {/* <a href="/#notes" className="text-white ">
               My Notes
             </a> */}
-            <Link to="/notes">My Notes</Link>
+            <Link style={{ color: "#fff" }} to="/notes">
+              My Notes
+            </Link>
           </li>
         </ul>
       </div>
